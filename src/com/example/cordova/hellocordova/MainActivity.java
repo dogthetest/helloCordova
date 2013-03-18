@@ -11,13 +11,13 @@ public class MainActivity extends DroidGap {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
-//        loadUrl("file:///android_asset/www/index_cordova.html");
+        loadUrl("file:///android_asset/www/index_cordova.html");
 //        loadUrl("file:///android_asset/www/capture_video.html");
 //        loadUrl("file:///android_asset/www/websqldb.html");
 //        loadUrl("file:///android_asset/www/contatos_webstorage.html");
 //        loadUrl("file:///android_asset/www/notificacoes.html");
 //        loadUrl("file:///android_asset/www/geolocalizacao.html");
-        loadUrl("file:///android_asset/www/api_files.html");
+//        loadUrl("file:///android_asset/www/api_files.html");
     }
 
 
