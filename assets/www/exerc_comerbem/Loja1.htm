@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<script src="exemplos_jqt/jquery.ui.touch-punch.min.js"></script>
+<script src="exemplos_jqt/jquery.js"></script>
+<script src="exemplos_jqt/jqtouch.js"></script>
+<body style="background-color: #ddd">
+<div class="slide semantics" id="form-types-mobile">
+Curso Iphone e Android apps com HTML5<BR>
+<BR>Novos campos
+<BR>
+<form action="teste.php" method=get oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+Entre com o Usuário: <input type="text"/><BR>
+Criptografia: <keygen name="security" /><BR>
+Entre com uma URL: <input type="url" /><BR>
+Entre com um Telefone: <input type="tel" placeholder="(11) 99999-9999" 
+pattern="^\(?\d{2}\)?[-\s]\d{5}[-\s]\d{4}.*?$" /><BR>
+Entre com uma datahora local: <input type="datetime-local"  min="2012-01-01" max="2012-08-31" 
+value="2010-12-16 12:01:00"/><BR>
+Entre com uma data: <input type="date" min="2012-01-01" max="2012-08-31" value="2012-08-01"/><BR>
+(SÓ para opera 9+) Entre com uma data e hora: <input type="datetime"  min="2012-01-01" max="2012-08-31" 
+value="2010-12-16 12:01:00 UTC;"/><BR>
+(SÓ para opera 9+) Entre com um mês: <input type="month" value="12;"/><BR>
+(SÓ para opera 9+) Entre com uma semana: <input type="week"/><BR>
+(SÓ para opera 9+) Entre com uma hora: <input type="time"/><BR>
+Entre com um número: <input type="number" name="valor" value="12.4" step="0.2" min="0" max="20"/><BR>
+Entre com um intervalo: <input type="range" min=1 max=10 value=1/><BR>
+Entre com uma cor: <input type="color"/><BR>
+Entre com o CEP: <input name="CEP" id="CEP" pattern="\d{5}-?\d{3}" /><BR>
+Tipo output:<input type="range" name="a" value="50" />100
++<input type="number" name="b" value="50" />
+=<output name="x" for="a b"></output><BR>
+Entre com o Browser: <input list="browsers" name="browser" required/>
+<datalist id="browsers">
+  <option value="Internet Explorer">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist><BR>
+Procure um texto: <input type="search" results=10 placeholder="Procure aqui..."/><BR>
+Faça sua observação: <BR><textarea maxlength=10 cols=50 rows=5 placeholder="observações..."></textarea><BR>
+<input type="submit" name="action" value="Salvar rascunho" formnovalidate>
+<input type="submit" name="action" value="Enviar">
+
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Este texto foi lido de um arquivo.txt

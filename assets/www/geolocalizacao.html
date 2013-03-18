@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,maximum-scale=1.0,initial-scale=1.0" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"> <!-- ISO-8859-1 -->
+    <title>Geolocalizacao</title>
+    <link rel="stylesheet" href="master_spec.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>      
+<script type="text/javascript" charset="utf-8">
+    //-------------------------------------------------------------------------
+    // Geolocalizacao
+    //-------------------------------------------------------------------------
+    var watchLocationId = null;
+
+    /**
+     * Iniciando rastreamento
+     */
+    var watchLocation = function(geo) {
+        console.log("watchLocation()");
+
+        // Success callback
+        var success = function(p){
+              console.log('watch location OK');
+              setLocationDetails(p);
+        };
+
+        // Fail callback
+        var fail = function(e){
+            console.log("watchLocation falhou com o codigo do erro "+e);
+            stopLocation(geo);
+        };
+
+        // Get location
+        watchLocationId = geo.watchPosition(success, fail, {enableHighAccuracy: true});
+        setLocationStatus("Running");
+    };
+
+    /**
+     * Parando rastreamento
+     */
+    var stopLocation = function(geo) {
+        setLocationStatus("Stopped");
+        if (watchLocationId) {
+            geo.clearWatch(watchLocationId);
+            watchLocationId = null;
+        }
+    };
+
+    /**
+     * Get current location
+     */
+    var getLocation = function(geo, opts) {
+        console.log("getLocation()");
+
+        // Stop location if running
+        stopLocation(geo);
+
+        // Success callback
+        var success = function(p){
+            console.log('get location OK');
+            setLocationDetails(p);
+            setLocationStatus("OK");
+        };
+
+        // Fail callback
+        var fail = function(e){
+            console.log("getLocation falhou com o codigo do erro "+e.code);
+            setLocationStatus("Error: "+e.code);
+        };
+
+        // Get location
+        geo.getCurrentPosition(success, fail, opts || {enableHighAccuracy: true}); //, {timeout: 10000});
+        setLocationStatus("Buscando localizacao...");
+
+    };
+
+    /**  Assosica o status da localizacao */
+    var setLocationStatus = function(status) {
+        document.getElementById('location_status').innerHTML = status;
+    };
+var setLocationDetails = function(p) {
+var date = (new Date(p.timestamp));
+            document.getElementById('latitude').innerHTML = p.coords.latitude;
+            document.getElementById('longitude').innerHTML = p.coords.longitude;
+            document.getElementById('altitude').innerHTML = p.coords.altitude;
+            document.getElementById('accuracy').innerHTML = p.coords.accuracy;
+            document.getElementById('heading').innerHTML = p.coords.heading;
+            document.getElementById('speed').innerHTML = p.coords.speed;
+            document.getElementById('altitude_accuracy').innerHTML = p.coords.altitudeAccuracy;
+            document.getElementById('timestamp').innerHTML =  date.toDateString() + " " + date.toTimeString();
+    }
+    
+    /**
+     * Function called when page has finished loading.
+     */
+    function init() {
+		document.addEventListener("deviceready", onDeviceReady, false);
+        window.setTimeout(function() {
+        	if (!deviceReady) {
+        		alert("Erro: Apache Cordova nao inicializado.");
+        	}
+        },1000);
+    }
+</script>
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <h1>Geolocalizacao</h1>
+    <div id="info">
+        <b>Status:</b> <span id="location_status">Parado</span>
+        <table width="100%">
+            <tr><td><b>Latitude:</b></td><td id="latitude">&nbsp;</td></tr>
+            <tr><td><b>Longitude:</b></td><td id="longitude">&nbsp;</td></tr>
+            <tr><td><b>Altitude:</b></td><td id="altitude">&nbsp;</td></tr>
+            <tr><td><b>Precisao:</b></td><td id="accuracy">&nbsp;</td></tr>
+            <tr><td><b>Titulo:</b></td><td id="heading">&nbsp;</td></tr>
+            <tr><td><b>Velocidade:</b></td><td id="speed">&nbsp;</td></tr>
+            <tr><td><b>Precisao altitude:</b></td><td id="altitude_accuracy">&nbsp;</td></tr>
+            <tr><td><b>Data e hora:</b></td><td id="timestamp">&nbsp;</td></tr>
+        </table>
+    </div>
+    <h3>Use navigator.geolocation para Geolocalizacao</h3>
+    <a href="javascript:" class="btn large" onclick="getLocation(navigator.geolocation);">Localizacao</a>
+    <a href="javascript:" class="btn large" onclick="watchLocation(navigator.geolocation);">Iniciar rastreamento</a>
+    <a href="javascript:" class="btn large" onclick="stopLocation(navigator.geolocation);">Parar rastreamento</a>
+    <a href="javascript:" class="btn large" onclick="getLocation(navigator.geolocation, {maximumAge:30000});">Localizacao de ate 30 segundos atras</a>
+    <h3>Use Phonegap para Geolocalizacao</h3>
+    <a href="javascript:" class="btn large" onclick="getLocation(cordova.require('cordova/plugin/geolocation'));">Localizacao</a>
+    <a href="javascript:" class="btn large" onclick="watchLocation(cordova.require('cordova/plugin/geolocation'));">Iniciar rastreamento</a>
+    <a href="javascript:" class="btn large" onclick="stopLocation(cordova.require('cordova/plugin/geolocation'));">Parar rastreamento</a>
+    <a href="javascript:" class="btn large" onclick="getLocation(cordova.require('cordova/plugin/geolocation'), {maximumAge:30000});">Localizacao de ate 30 segundos atras</a>    
+  </body>
+</html>      

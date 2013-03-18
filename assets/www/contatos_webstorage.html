@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Curso PhoneGap</title>
+        <style type="text/css" media="screen">
+            body{font:75% "Lucida Grande","Trebuchet MS",Verdana,sans-serif;padding:10px;text-align:center;}
+            hr{border-color:gold;border-style:solid;border-width:1px 0 0 0;margin:10px 0;width:100%;}
+            table{border-collapse:collapse;border-color:gold;border-style:none;width:100%;}
+            th,td{padding:6px;}
+            tr:nth-child(even){background-color:lightyellow;}
+            .link{color:goldenrod;cursor:pointer;font-weight:bold;text-decoration:underline;text-align:center;width:40px;}
+            #content{margin:0 auto;text-align:left;width:300px;}
+            #newRecordWrapper label{display:block;}
+            #newRecordWrapper input[type='button']{display:block;}
+        </style>
+	    <link rel="stylesheet" href="master_spec.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>      
+        <script type="text/javascript" charset="utf-8">
+            function createPerson() {
+                var person = {
+                    'firstName': firstNameField.value,
+                    'lastName': lastNameField.value, 
+                    'id': new Date().getTime()
+                };
+                var people = JSON.parse(localStorage.getItem('people'));
+                people.push(person);
+                localStorage.setItem('people', JSON.stringify(people));
+                findAll();
+            }
+            function deletePerson(id) {
+                var people = JSON.parse(localStorage.getItem('people'));
+                for (var i=0; i < people.length; i++) {
+                    var person = people[i];
+                    if (person.id == id) { 
+                        people.splice(i,1);
+                        localStorage.setItem('people', JSON.stringify(people));
+                        break;
+                    }
+                }
+                findAll();
+            }
+            function find() {
+                // Convert the user input to a regular expression (the ^ forces a "starts with" match and the i indicates case-insensitive search)
+                var searchCriteria = new RegExp('^' + criteriaField.value, 'i');
+                // Loop through the people looking for matches
+                var results = [];
+                var people = JSON.parse(localStorage.getItem('people'));
+                for (var i=0; i < people.length; i++) {
+                    var person = people[i];
+                    if (person.firstName.match(searchCriteria)
+                    || person.lastName.match(searchCriteria)) { 
+                        results.push(person);  
+                    }
+                }
+                renderResults(results);
+            }
+            function findAll() {
+                var people = JSON.parse(localStorage.getItem('people'));
+                renderResults(people);
+            }
+            function renderResults(results) {
+                // Clear user input fields
+                firstNameField.value = '';
+                lastNameField.value = '';
+                criteriaField.value = '';
+                // Process the results array
+                var html = '';
+                if (results.length == 0) {
+                    html = '<h3>Não foram encontrados registros.</h3>';
+                } else {
+                    // This is just a generic javascript comparison function used to sort array elements)
+                    results.sort(function(a,b) {
+                        var value1 = a.firstName.toLowerCase();
+                        var value2 = b.firstName.toLowerCase()
+                        var value3 = a.lastName.toLowerCase();
+                        var value4 = b.lastName.toLowerCase()
+                        if (value1 < value2) {
+                            return -1;
+                        } else if (value1 > value2) {
+                            return 1;
+                        } else {
+                            if (value3 < value4) {
+                                return -1;
+                            } else if (value3 > value4) {
+                                return 1;
+                            } else {
+                                return 0;
+                            }
+                        }
+                    });
+                    html+= '<h3>Resultados</h3>';
+                    html+= '<table border="1">';
+                    html+= '<tr><th>Nome</th><th>Sobrenome</th><th>&nbsp;</th></tr>';
+                    for (var i=0, len = results.length; i < len; i++) {
+                        var row = results[i];
+                        html+= '<tr>';
+                        html+= '<td>'+row.firstName+'</td>';
+                        html+= '<td>'+row.lastName+'</td>';
+                        html+= '<td class="link" onclick="deletePerson('+row.id+')">Apagar</td>';
+                        html+= '</tr>';
+                    }
+                    html+= '</table>';
+                }
+                // Inject the compiled html into the DOM
+                resultsWrapper.innerHTML = html;
+            }
+            // Let's get this party started...
+            window.onload = function() {
+                var criteriaField = document.getElementById('criteriaField');
+                var firstNameField = document.getElementById('firstNameField');
+                var lastNameField = document.getElementById('lastNameField');
+                var resultsWrapper = document.getElementById('resultsWrapper');
+                if(localStorage.getItem('people') == undefined){
+                    var people = [];
+                    localStorage.setItem('people', JSON.stringify(people));
+                };
+                findAll();
+            }
+        </script>
+    </head>
+    <body>
+        <div id="content" class="theme">
+            <h1>Curso PhoneGap</h1>
+            <h1>Contatos com Web Storage</h1>
+            <div id="newRecordWrapper">
+                <label for="firstNameField">Nome:</label><input type="text" id="firstNameField">
+                <label for="lastNameField">Sobrenome:</label><input type="text" id="lastNameField">
+                <input type="button" value="Salvar" onclick="createPerson()">
+            </div>
+            <hr>
+            <div>
+                <label for="criteriaField">Search:</label>
+                <input type="text" id="criteriaField">
+                <input type="button" value="Procurar" onclick="find()">
+            </div>
+            <div id="resultsWrapper"><h3>Não foram encontrados registros.</h3></div>
+        </div>
+    
+</body></html>

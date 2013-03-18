@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,maximum-scale=1.0,initial-scale=1.0" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Curso PhoneGap</title>
+    <link rel="stylesheet" href="master_spec.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="main_spec.js"></script>
+    <style>
+      iframe, .iframe_container {
+        height:100px;
+        overflow:scroll;
+      }
+    </style>
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <h1>Misc2 App</h1>
+    <h2>Esta e a pagina Misc2 do exercicio Phonegap</h2>
+    <div id="info">
+        <h4>Plataforma: <span id="platform">  </span></h4>
+        <h4>Versaon: <span id="version"> </span></h4>
+        <h4>UUID: <span id="uuid">  </span></h4>
+        <h4>nome: <span id="name"> </span></h4>
+        <h4>Largura: <span id="width">  </span>,   Altura: <span id="height"> 
+        </span>, Bit de cores: <span id="colorDepth"></span></h4>
+     </div>
+     Pagina em branco
+     <div class="iframe_container">
+       <iframe src="about:blank"></iframe>
+     </div>
+     Tempo Real
+     <div class="iframe_container">
+       <iframe src="http://www.temporealeventos.com.br/?area=260"></iframe>
+     </div>
+     Penabola
+     <div class="iframe_container">
+       <iframe src="http://www.penabola.com.br"></iframe>
+     </div>
+     <div><button class="backBtn" onclick="backHome();">Voltar</button></div>
+  </body>
+</html>

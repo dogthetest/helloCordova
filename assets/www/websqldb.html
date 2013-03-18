@@ -1,0 +1,91 @@
+ <html>
+  <head>
+  <title>Curso PhoneGap</title>
+  <meta name="expires" content="0" />
+    <link rel="stylesheet" href="master_spec.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>      
+  </head>
+  <body class="theme">
+  <br>
+  <h1>Curso PhoneGap</h1>
+  <h1>Web SQL Databases</h1>
+  <ul id="results"></ul>
+  <div id="logs"></div>
+ Registros: <input type="text" id="items" />  <br /> <br />
+ <button onClick="createTable()">Criando a tabela</button> 
+ <button onClick="createRecord()">Criando um registro</button> 
+ <button onClick="dropTable()">Apagando a tabela</button> <br /> <br />
+ </body>
+ <script>
+ // Arguments: Database Name, Version, Display Name, Estimated Size (bytes)
+ var database = openDatabase("bancoteste", "1.0", "Phonegap Web SQL Database", 20000);
+ var log = document.querySelector("#logs");
+ 
+ // Read records stored
+ function readRecord() {
+ 	document.querySelector("#results").innerHTML = '';
+ 	database.transaction(function(tx) {
+     tx.executeSql("SELECT * FROM TESTE", [], function(tx, result) {
+       for (var i = 0, item = null; i < result.rows.length; i++) {
+         item = result.rows.item(i);
+         document.querySelector("#results").innerHTML += 
+             '<li><span contenteditable="true" onkeyup="updateRecord('+item['id']+', this)">'+
+             item['text'] + '</span> <a href="#" onclick="deleteRecord('+item['id']+')">[Apagar]</a></li>';
+       }
+     });
+   });
+ }
+ 
+ // Update record on the fly
+ function updateRecord(id, textEl) {
+   database.transaction(function(tx) {
+     tx.executeSql("UPDATE TESTE SET text = ? WHERE id = ?", [textEl.innerHTML, id], null, onError);
+   });
+ }
+ 
+ // Delete selected record 
+ function deleteRecord(id) {
+   database.transaction(function(tx) {
+     tx.executeSql("DELETE FROM TESTE WHERE id=?", [id],
+         function(tx, result) { readRecord() }, 
+         onError);
+   });
+ }
+ 
+ // Add record with random values
+ function createRecord() {
+   var num = Math.round(Math.random() * 10000); // Random data
+   database.transaction(function(tx) {
+     tx.executeSql("INSERT INTO TESTE (id, text) VALUES (?, ?)", [num, document.querySelector('#items').value],
+         function(tx, result) {
+           log.innerHTML = '';
+           readRecord();
+         }, 
+         onError);
+   });
+ }
+ 
+ // Create table 
+ function createTable() {
+   database.transaction(function(tx) {
+     tx.executeSql("CREATE TABLE TESTE (id REAL UNIQUE, text TEXT)", [],
+         function(tx) { log.innerHTML = '<p>Tabela TESTE criada!</p>'; },
+         onError);
+   });
+ }
+ 
+ // Delete table from database
+ function dropTable() {
+   database.transaction(function(tx) {
+     tx.executeSql("DROP TABLE TESTE", [],
+         function(tx) { readRecord(); log.innerHTML = '<p>Tabela TESTE apagada!</p>'; }, 
+         onError);
+   });
+ }
+ 
+ // Log errors
+ function onError(tx, error) {
+   log.innerHTML += '<p>' + error.message + '</p>';
+ }
+ </script>
+ </html>

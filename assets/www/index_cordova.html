@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Curso PhoneGap</title>
+      <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title">
+      <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+      <script type="text/javascript" charset="utf-8" src="main.js"></script>
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <h1>Bem vindo ao curso de PhoneGap!</h1>
+    <h2>Este arquivo esta no diretório assets/www/index_cordova.html</h2>
+    <div id="info">
+        <h4>Plataforma: <span id="platform"> &nbsp;</span>,   Versão: <span id="version">&nbsp;</span>
+		Cordova: <span id="cordova"> &nbsp;</span></h4>
+        <h4>UUID: <span id="uuid"> &nbsp;</span>,   Nome: <span id="name">&nbsp;</span></h4>
+        <h4>Largura: <span id="width"> &nbsp;</span>,   Altura: <span id="height">&nbsp;
+                   </span>, Color Depth: <span id="colorDepth"></span></h4>
+     </div>
+    <dl id="accel-data">
+      <dt>X:</dt><dd id="x">&nbsp;</dd>
+      <dt>Y:</dt><dd id="y">&nbsp;</dd>
+      <dt>Z:</dt><dd id="z">&nbsp;</dd>
+    </dl>
+    <a href="#" class="btn large" onclick="toggleAccel();">Acelerômetro</a>
+    <a href="#" class="btn large" onclick="getLocation();">Localização</a>
+    <a href="tel:192" class="btn large">Chamada para emergência</a>
+    <a href="#" class="btn large" onclick="beep();">Beep</a>
+    <a href="#" class="btn large" onclick="vibrate();">Vibração</a>
+    <a href="#" class="btn large" onclick="show_pic();">Fotos</a>
+    <a href="#" class="btn large" onclick="get_contacts();return false;">Ler contatos</a>
+    <a href="#" class="btn large" onclick="check_network();return false;">Checando as redes</a>
+    <dl>
+    <dt>Bússola:</dt><dd id="h">Desligado</dd>
+    </dl>
+    <a href="#" class="btn large" onclick="toggleCompass();return false;">Ligar bússola</a>
+    <div id="viewport" class="viewport" style="display: none;">
+      <img style="width:60px;height:60px" id="test_img" src="" />
+    </div>
+  </body>
+</html>

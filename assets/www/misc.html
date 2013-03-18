@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,maximum-scale=1.0,initial-scale=1.0" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"> <!-- ISO-8859-1 -->
+    <title>Curso PhoneGap</title>
+    <link rel="stylesheet" href="master_spec.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+	<script type="text/javascript" charset="utf-8">
+    function roundNumber(num) {
+        var dec = 3;
+        var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
+        return result;
+    }
+    /**
+     * Function called when page has finished loading.
+     */
+    function init() {
+        window.setTimeout(function() {
+        	if (!deviceReady) {
+        		alert("Erro: Apache cordova não iniciado..");
+        	}
+        },1000);
+    }
+</script>
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <h1>Outros exemplos</h1>
+    <div id="info">
+    </div>
+    <div class="btn large" onclick="document.location='tel:192';" >Chamando emergencia</div>
+    <a href="mailto:anderson@uol.com.br?subject=E-mail do curso PhoneGap&body=Este e o corpo do e-mail do curso PhoneGap.%0D%0Anova linha." class="btn large">Envia E-mail</a>
+    <a href="sms:5125551234?body=The SMS message." class="btn large">Enviar SMS</a>
+    <a href="http://www.temporealeventos.com.br/?area=260" class="btn large">Carregar Web Site</a>
+    <!--  Need new URL -->
+    <!-- a href="http://handle.library.cornell.edu/control/authBasic/authTest/" class="btn large">Basic Auth: test/this</a -->
+    <a href="misc2.html" class="btn large">Carregar pagina com iframes</a>
+    <a href="misc2.html?me=test" class="btn large">Carregar pagina com query param</a>
+    <h2>Android Only</h2>
+    <a href="geo:0,0?q=01549020 rua pereira da nobrega, 396 - Ipiranga, São Paulo - São Paulo" class="btn large">Mapa da sua Empresa</a>
+    <a href="market://search?q=google" class="btn large">Pesquisa Google Play</a>
+    <a href="content://media/internal/images/media" class="btn large">Visualizar app Imagens interna</a>
+    <a href="content://media/external/images/media" class="btn large">Visualizar app Imagens externa</a>
+    <a href="content://com.android.contacts/contacts/" class="btn large">Visualizar app Contatos</a>
+  </body>
+</html>      

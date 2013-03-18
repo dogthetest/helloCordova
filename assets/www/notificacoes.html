@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,maximum-scale=1.0,initial-scale=1.0" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"> <!-- ISO-8859-1 -->
+    <title>Curso PhoneGap</title>
+    <link rel="stylesheet" href="master_spec.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+	<script type="text/javascript" charset="utf-8">
+
+//    var deviceReady = false;
+
+    //-------------------------------------------------------------------------
+    // Notificacoes
+    //-------------------------------------------------------------------------
+
+    var beep = function(){
+        navigator.notification.beep(2);
+    };
+
+    var vibrate = function(){
+      navigator.notification.vibrate(1000);
+    };
+
+    var alertDialog = function(message, title, button) {
+        console.log("alertDialog()");
+        navigator.notification.alert(message,
+            function(){
+                console.log("Alerta recusado.");
+            },
+            title, button);
+        console.log("Depois do alerta");
+    };
+
+    var confirmDialog = function(message, title, buttons) {
+        navigator.notification.confirm(message,
+            function(r) {
+                console.log("Voce selecionou " + r);
+                alert("Voce selecionou " + (buttons.split(","))[r-1]);
+            },
+            title,
+            buttons);
+    };
+    
+    /**
+     * Function called when page has finished loading.
+     */
+    function init() {
+    // Wait for Cordova to load
+    //
+//		document.addEventListener("deviceready", onDeviceReady, false);
+//        document.addEventListener("deviceready", function() {       deviceReady = true;
+//                console.log("Device="+device.platform+" "+device.version);
+//            }, false);
+        window.setTimeout(function() {
+        	if (!deviceReady) {
+        		alert("Erro: Apache Cordova nao foi inicializado.");
+        	}
+        },1000);
+    }
+
+</script>
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+  
+    <h1>Notificacoes e dialogos</h1>
+    <div id="info">
+    </div>
+    <div class="btn large" onclick="beep();">Som</div>
+    <div class="btn large" onclick="vibrate();">Vibracao</div>
+    <div class="btn large" onclick="alertDialog('Voce pressionou alerta.', 'Dialogo de Alerta', 'Continua');">Dialogo de alerta</div>
+    <div class="btn large" onclick="confirmDialog('Voce pressionou confirma.', 'Dialogo de confirmacao', 'Cancela,Nao,Sim');">Dialogo de confirmacao</div>
+    <div class="btn large" onclick="alert('Voce pressionou alerta.');">Construindo um dialogo de alerta</div>
+    <div class="btn large" onclick="confirm('Voce pressionou confirm.');">Construindo um dialogo de confirmacao</div>
+    <div class="btn large" onclick="prompt('Qual e sua idade.', 'Valor padrao');">Contruindo um dialogo de pergunta</div>
+  </body>
+</html>      

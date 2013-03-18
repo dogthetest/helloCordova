@@ -1,0 +1,136 @@
+﻿body {
+    background-color: #fff;
+    margin: 0px 0px 0px 0px;
+}
+.logo {
+    width: 288px;
+    height: 144px;
+}
+
+a {
+    font-size: 26px;
+    text-decoration: none;
+    color: #0094ff;
+    font-weight: bold;
+}
+
+#divTopo {
+    background-color:  #0094ff;
+    height:  60px;
+    margin-top:  0px;
+    margin-left: 0px;
+    width: 100%;
+}
+
+#organizer {
+    width: 300px;
+    height: 320px;
+    margin: 0 auto;
+    padding: 47px 0 0 0;
+}
+
+
+#TitleSearch {
+    margin:  0 auto;
+    background-color:  #0094ff;
+    height:30px;
+    width: 300px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    border:4px solid #0094ff;
+   
+    text-align:  center;
+    color:  white;
+    font-weight: bold; 
+    vertical-align: middle;
+}
+
+#example {
+    -webkit-border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
+    -webkit-box-shadow: #B3B3B3 10px 10px 10px;
+    -moz-box-shadow: #B3B3B3 10px 10px 10px; 
+    box-shadow: #B3B3B3 10px 10px 10px;   
+}
+
+#divMenu {
+    width: 300px;
+    margin:  0 auto;
+    text-align:  center;
+    vertical-align: middle;
+}
+
+
+.menuImage  {
+    margin-left: 0px;
+    padding: 0;
+    float: left;
+    width: 300px;
+    height: 110px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+#spnTitle {
+    position: relative;
+    left: 40px;
+    color: white;
+    font-size: 20px;
+    top: -15px;
+    font-weight: bold;
+}
+
+#panelbar li {
+    list-style-type: none;
+    border-top: 2px solid #fff;
+    display: block;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+    margin-left: -40px;
+}
+
+#panelbar li a {
+    text-decoration: none;
+}
+
+#divLoadData {
+    width: 300px;
+    height: 200px;
+    background-color: #0094ff;    
+    color: #fff;
+    z-index: 1;
+    position: fixed;
+    top: 100px;
+    left: 200px;
+}
+
+
+#divBar li {  
+    display: inline;  
+}  
+
+#divBar li a {  
+    font-family: Arial;  
+    font-size:11px;  
+    text-decoration: none;  
+    float:left;  
+    padding: 10px;  
+    background-color: #2175bc;  
+    color: #fff;  
+}  
+#divBar li a:hover {  
+    background-color: #2586d7;  
+    margin-top:-2px;  
+    padding-bottom:12px;  
+}  
+
+#divBar {
+    position: relative;
+    top:  0px;    
+}
+

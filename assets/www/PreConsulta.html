@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Flextracker</title>
+      <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title">
+      <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+      <script type="text/javascript" charset="utf-8" src="main_foto.js"></script>
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <h1>Flextracker</h1>
+    <h2>Consulta a distância</h2>
+    <div id="info">
+        <h4><center>Dados do dispositivo</center></h4>
+        <h4>Plataforma: <span id="platform"> &nbsp;</span>,   Versão: <span id="version">&nbsp;</span></h4>
+        <h4>UUID: <span id="uuid"> &nbsp;</span>,   Nome: <span id="name">&nbsp;</span></h4>
+        <h4>Largura: <span id="width"> &nbsp;</span>,   Altura: <span id="height">&nbsp;
+                   </span>, Cor: <span id="colorDepth"></span></h4>
+     </div>
+    <a href="#" class="btn large" onclick="getLocation();">Indique sua localização</a>
+    <a href="tel:411" class="btn large">Entre em contato</a>
+	<a href="#" class="btn large" onclick="show_pic();">Foto do olhos</a>
+	<a href="#" class="btn large" onclick="show_pic1();">Foto do rosto</a>
+	<a href="#" class="btn large" onclick="show_pic2();">Fotos das mãos</a>
+	<a href="#" class="btn large" onclick="show_pic3();">Fotos dos pés</a>
+    <div id="viewport" class="viewport" style="display: none;">
+      <img style="width:60px;height:60px" id="test_img" src="" />
+    </div>
+    <div id="viewport1" class="viewport" style="display: none;">
+      <img style="width:60px;height:60px" id="test_img1" src="" />
+    </div>
+    <div id="viewport2" class="viewport" style="display: none;">
+      <img style="width:60px;height:60px" id="test_img2" src="" />
+    </div>
+    <div id="viewport3" class="viewport" style="display: none;">
+      <img style="width:60px;height:60px" id="test_img3" src="" />
+    </div>
+
+	</body>
+</html>

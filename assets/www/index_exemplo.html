@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Loja de livros</title>
+	   <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+	   <!-- 1o. passo - Carregando os scripts e temas Android -->
+       <link type="text/css" rel="stylesheet" media="screen" href="./themes/jqtouch.css">
+	   <!-- 2o. passo - Tema para Apple  href="./themes/apple/theme.css -->
+       <link type="text/css" rel="stylesheet" media="screen" href="./themes/theme.css">
+       <script type="text/javascript" src="./themes/jquery.js"></script>
+       <script type="text/javascript" src="./themes/jqtouch.js"></script>
+	   <!-- 3o. passo - Iniciando o JQTouch -->
+       <script type="text/javascript">
+           var jQT = new $.jQTouch();
+       </script>
+    </head>
+    <!-- 4o. passo - Criando o elemento jQT -->
+    <!-- 5o. passo - Alterando a classe Supports3d com orientação retrato (portrait) -->
+    <body id="jqt" class="supports3d portrait">
+        <!-- 6o. passo - Alterando a classe da DIV principal (current) -->
+        <div id="home">
+		   <!-- 7o. passo - Alterando a classe da toolbar em todas as DIV´s que tem título (toolbar) -->
+           <div class="toolbar">
+                <h1>Loja de livros</h1>
+           </div>
+		  <!-- 8o. passo - Alterando a classes da lista UL em todas as DIV´s que tem listas (edgetoedge, metal, plastic ou form) -->
+           <ul class="edgetoedge">
+               <!-- 9o. passo - Alterando a classes dos itens da lista LI em todas as DIV´s que tem itens (arrow ou forward)  -->
+               <li class="arrow"><a href="#livros">Livros</a></li>
+               <li class="arrow"><a href="#contatos">Contatos</a></li>
+			   <li class="arrow"><a href="tel: 0411121575892" target="_blank">Ligue para nós</a></li>
+           </ul>
+        </div>
+        <div id="livros">
+            <div class="toolbar">
+               <h1>Livros</h1>
+		       <!-- 10o. passo - Alterando a classes dos botões da toolbar em todas as DIV´s que tem link junto aos títulos (button back, button flip, button slideup)  -->
+               <a class="button back" href="#">Voltar</a>
+            </div>
+            <p>Lista de livros</p><BR>
+            <p>Iphone e Android apps com HTML5 e CSS3</p>
+            <p>Gestão de projetos com JIRA e Greenhopper</p>
+            <p>Desenvolvendo apps Android</p>
+        </div>
+        <div id="contatos">
+            <div class="toolbar">
+               <h1>Contato</h1>
+               <a class="button back" href="#">Voltar</a>
+            </div>
+            <p>Departamento comercial</p>
+            <p>Rua São Amaro, 341 - São Paulo - SP</p>
+            <p>Brasil</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Flextracker</title>
+      <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title">
+      <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+      <script type="text/javascript" charset="utf-8" src="main_foto.js"></script>
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <h1>Consulta a distância</h1>
+    <h2>Tire as fotos solicitadas</h2>
+    <div id="info">
+        <h4>Platform: <span id="platform"> &nbsp;</span>,   Version: <span id="version">&nbsp;</span></h4>
+        <h4>UUID: <span id="uuid"> &nbsp;</span>,   Name: <span id="name">&nbsp;</span></h4>
+        <h4>Width: <span id="width"> &nbsp;</span>,   Height: <span id="height">&nbsp;
+                   </span>, Color Depth: <span id="colorDepth"></span></h4>
+     </div>
+    <a href="#" class="btn large" onclick="getLocation();">Indique sua localização</a>
+    <a href="tel:411" class="btn large">Ligue para mós</a>
+	<a href="#" class="btn large" onclick="show_pic1();">Foto do olhos</a>
+	<a href="#" class="btn large" onclick="show_pic2();">Fotos das mãos</a>
+    <div id="viewport1" class="viewport" style="display: none;">
+      <img style="width:60px;height:60px" id="test_img1" src="" />
+    </div>
+    <div id="viewport2" class="viewport" style="display: none;">
+      <img style="width:60px;height:60px" id="test_img2" src="" />
+    </div>
+
+	</body>
+</html>

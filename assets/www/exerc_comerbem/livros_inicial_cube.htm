@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" rel="stylesheet" media="screen" href="./themes/jqtouch.css">
+<link type="text/css" rel="stylesheet" media="screen" href="./themes/theme.css">
+<script type="text/javascript" src="./themes/jquery.js"></script>
+<script type="text/javascript" src="./themes/jqtouch.js"></script>
+<script>
+var jQT = $.jQTouch({
+	icon: 'img/jqtouch.png',
+    addGlossToIcon: false,
+	startupScreen: 'img/jqt_startup.png',
+	statusBar: 'black',
+    cubeSelector: 'cube'
+});   
+   </script>
+</head>
+<body id="jqt" class="supported3d portrait">
+	<div class="cube out" id="page1">
+		<div class="toolbar">
+			<h1>Página 1</h1>
+		</div>
+		<ul class="edgetoedge">
+			<li><a href="#page1">Página um</a></li>
+			<li><a href="#page2">Página dois</a></li>
+			<li><a href="#page3">Página três</a></li>
+			<li><a href="#page4">Página quatro</a></li>
+		</ul>
+	</div>
+	<div class="cube in" id="page2">
+		<div class="toolbar">
+			<h1>Página 2</h1>
+			<a href="#" class="back">Voltar</a>
+		</div>
+	</div>
+	<div class="cube in" id="page3">
+		<div class="toolbar">
+			<h1>Página 3</h1>
+			<a href="#page_su" class="button slideup">Slideup</a>
+		</div>
+	</div>
+	<div class="cube in" id="page_su">
+		<div class="toolbar">
+			<h1>Página 4</h1>
+			<a href="#" class="back">Voltar</a>
+		</div>
+	</div>
+	<div class="cube in" id="page4">
+		<div class="toolbar">
+			<h1>Página 3</h1>
+			<a href="#page_f" class="button fade">Fade</a>
+		</div>
+	</div>
+	<div class="cube in" id="page_f">
+		<div class="toolbar">
+			<h1>Página 4</h1>
+			<a href="#" class="back">Voltar</a>
+		</div>
+	</div>
+</body>
+</html>

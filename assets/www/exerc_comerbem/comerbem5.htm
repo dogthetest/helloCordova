@@ -1,0 +1,134 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="apple-touch-icon" href="themes/img/apple-touch-icon.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link type="text/css" rel="stylesheet" media="screen" href="./themes/jqtouch.css">
+<link type="text/css" rel="stylesheet" media="screen" href="./themes/apple/theme.css">
+<script type="text/javascript" src="./themes/jquery.js"></script>
+<script type="text/javascript" src="./themes/jqtouch.js"></script>
+
+<link type="text/css" rel="stylesheet" media="screen" href="./themes/llife.css">
+<script type="text/javascript" src="./themes/llife_localiza.js"></script>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&language=pt-BR"></script>
+
+<style type="text/css">
+	body {width:100%; padding:0px 0px 20px 0px; margin:0px; background-color:#E6EEF7;font-size:12px;font-weight:normal;min-width:240px;min-height:500px; background-color:#E6EEF7;}
+        #geo {width: 100%; height: 100%;}
+</style>
+
+<title>Curso IPhone e Android apps com HTML5 - Comer Bem</title>
+    </head>
+	<body id="jqt" class="supports3d portrait" onLoad="initGeoLocalizacao();">	
+        <div id="home" class="Current" style="min-height: 900px; ">
+            <div class="toolbar">
+                <h1>Comer bem</h1>
+                <a class="button flip" href="comerbem5.htm#settings">Config</a>
+            </div>
+            <ul class="edgetoedge">
+                <li class="arrow"><a href="comerbem5.htm#dates">Data</a></li>
+                <li class="arrow"><a href="comerbem5.htm#about">Quem somos</a></li>
+                <li class="arrow"><a href="comerbem5.htm#localizacao">Localização</a></li>
+            </ul>
+        </div>
+        <div id="about" style="min-height: 624px; ">
+            <div class="toolbar">
+                <h1>Quem somos</h1>
+                <a class="button back" href="comerbem5.htm#">Voltar</a>
+            </div>
+            <div>
+            <center>
+			<p>&nbsp;</p>
+                <p>O Comer Bem é uma plataforma de Saúde e bem estar, com nosso aplicativo voce poderá acompanhar diariamente todos os pontos que voce consumiu.</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;Empresa exemplo</p>
+                <p>&nbsp;+55 11 4567-5678</p>
+                <p>&nbsp;São Paulo - Brasil</p>
+            </center>
+            </div>
+        </div>
+        <div id="dates" style="min-height: 624px; ">
+            <div class="toolbar">
+                <h1>Datas</h1>
+                <a class="button back" href="comerbem5.htm#">Voltar</a>
+            </div>
+            <ul class="edgetoedge">
+                <li class="arrow"><a id="0" href="comerbem5.htm#date">Hoje</a></li>
+                <li class="arrow"><a id="1" href="comerbem5.htm#date">Ontem</a></li>
+                <li class="arrow"><a id="2" href="comerbem5.htm#date">a 2 dias</a></li>
+                <li class="arrow"><a id="3" href="comerbem5.htm#date">a 3 dias</a></li>
+                <li class="arrow"><a id="4" href="comerbem5.htm#date">a 4 dias</a></li>
+                <li class="arrow"><a id="5" href="comerbem5.htm#date">a 5 dias</a></li>
+            </ul>
+        </div>
+        <div id="date" style="min-height: 624px; ">
+            <div class="toolbar">
+                <h1>Comer Bem</h1>
+                <a class="button back" href="comerbem5.htm#">Voltar</a>
+                <a class="button slideup" href="comerbem5.htm#createEntry">+</a>
+            </div>
+            <ul class="edgetoedge">
+                <li id="entryTemplate" class="entry" style="display:none">
+                    <span class="label">Label</span>
+                    <span class="calories">000</span>
+                    <span class="delete">Apagar</span>
+                </li>
+            </ul>
+        </div>
+ 
+        <div id="createEntry" style="min-height: 624px; ">
+            <div class="toolbar">
+                <h1>Novo registro</h1>
+                <a class="button cancel" href="http://www.penabola.com.br/html5/llife.htm#">Cancelar</a>
+            </div>
+            <form method="post">
+                <ul class="rounded">
+                    <li><input type="text" placeholder="Comida" name="food" id="food" autocapitalize="off" autocorrect="off" autocomplete="off"></li>
+                    <li><input type="text" placeholder="Calorias" name="calories" id="calories" autocapitalize="off" autocorrect="off" autocomplete="off"></li>
+                    <li><input type="submit" class="submit" name="action" value="Gravar"></li>
+                </ul>
+            </form>
+        </div>
+ 
+        <div id="settings" style="min-height: 624px; ">
+            <div class="Toolbar">
+                <h1>Configurações</h1>
+                <a class="button cancel" href="http://www.penabola.com.br/html5/llife.htm#">Cancelar</a>
+            </div>
+            <form method="post">
+                <ul class="rounded">
+                    <li>Idade<input placeholder="Idade" type="text" name="age" id="age"></li>
+                    <li>Peso <input placeholder="Peso" type="text" name="weight" id="weight"></li>
+                    <li>Meta de calorias <input placeholder="Meta de calorias" type="text" name="budget" id="budget"></li>
+                    <li><input type="submit" class="submit" name="action" value="Gravar"></li>
+                </ul>
+            </form>
+        </div>
+
+        <div id="localizacao" class="" style="min-height: 624px; ">
+            <div class="toolbar">
+                <h1>Localização</h1>
+                <a class="button back" href="comerbem5.htm#">Voltar</a>
+            </div>
+			<div id="geo">
+				<p id="status">Procurando sua localização...</p>
+			</div>
+        </div>
+    <script language="javascript" type="text/javascript">
+        var a = document.getElementsByTagName("a");
+        
+        for (var i = 0; i < a.length; i++) {
+            if (a[i].getAttribute("target") != '_blank') {
+                a[i].onclick = function () {
+                    window.location = this.getAttribute("href"); return false;
+                }
+            }
+        }
+        
+        function AutoScroll() {
+            window.scrollTo(0, 1);
+        }   
+        setTimeout("AutoScroll()", 500);         
+    </script>
+</body></html>
